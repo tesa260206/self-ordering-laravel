@@ -17,18 +17,67 @@
         </p>
     </div>
 
-    <div class="flex-1 flex items-center justify-center w-full my-8 animate-[fadeIn_0.8s_ease-out] pointer-events-none">
+    <div class="flex-1 flex items-center justify-center w-full mt-4 mb-4 animate-[fadeIn_0.8s_ease-out] pointer-events-none">
         <lottie-player 
             src="{{ asset('Cup of tea.json') }}" 
             background="transparent" 
             speed="1" 
-            style="width: 280px; height: 280px;" 
+            style="width: 200px; height: 200px;" 
             loop 
             autoplay>
         </lottie-player>
     </div>
 
-    <div class="w-full pb-8 animate-[fadeIn_1s_ease-out]">
+    {{-- Menu Terlaris (Marquee) --}}
+    @if(isset($bestSellers) && $bestSellers->count() > 0)
+    <div class="w-full overflow-hidden mb-8 animate-[fadeIn_0.9s_ease-out]">
+        <div class="mb-3 text-left px-6 flex items-center gap-2">
+            <i data-lucide="star" class="w-4 h-4 text-primary fill-primary"></i>
+            <span class="text-xs font-bold text-secondary uppercase tracking-wider">Paling Banyak Dipesan</span>
+        </div>
+        
+        <div class="flex w-max animate-marquee">
+            {{-- Bagian Pertama --}}
+            <div class="flex gap-3 px-3 w-max">
+                @foreach($bestSellers as $menu)
+                    <div class="flex items-center gap-3 bg-white p-2.5 rounded-2xl border border-gray-100 shadow-sm w-[210px] flex-shrink-0">
+                        @if($menu->image)
+                            <img src="{{ Storage::url($menu->image) }}" class="w-12 h-12 rounded-2xl object-cover" alt="{{ $menu->name }}">
+                        @else
+                            <div class="w-12 h-12 rounded-2xl bg-gray-100 flex items-center justify-center text-gray-400">
+                                <i data-lucide="image" class="w-5 h-5"></i>
+                            </div>
+                        @endif
+                        <div class="flex-1 overflow-hidden text-left">
+                            <h4 class="text-[13px] font-bold text-secondary truncate">{{ $menu->name }}</h4>
+                            <p class="text-[11px] font-semibold text-primary mt-0.5">Rp {{ number_format($menu->price, 0, ',', '.') }}</p>
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+            {{-- Duplikat untuk animasi seamless berjalan terus menerus --}}
+            <div class="flex gap-3 px-3 w-max" aria-hidden="true">
+                @foreach($bestSellers as $menu)
+                    <div class="flex items-center gap-3 bg-white p-2.5 rounded-2xl border border-gray-100 shadow-sm w-[210px] flex-shrink-0">
+                        @if($menu->image)
+                            <img src="{{ Storage::url($menu->image) }}" class="w-12 h-12 rounded-2xl object-cover" alt="{{ $menu->name }}">
+                        @else
+                            <div class="w-12 h-12 rounded-2xl bg-gray-100 flex items-center justify-center text-gray-400">
+                                <i data-lucide="image" class="w-5 h-5"></i>
+                            </div>
+                        @endif
+                        <div class="flex-1 overflow-hidden text-left">
+                            <h4 class="text-[13px] font-bold text-secondary truncate">{{ $menu->name }}</h4>
+                            <p class="text-[11px] font-semibold text-primary mt-0.5">Rp {{ number_format($menu->price, 0, ',', '.') }}</p>
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+        </div>
+    </div>
+    @endif
+
+    <div class="w-full pb-8 animate-[fadeIn_1s_ease-out] px-6">
         
         <a href="{{ route('customer.menu', ['table' => $table->table_number]) }}" class="w-full bg-primary hover:bg-[#ca8a04] text-white py-4 rounded-2xl text-[17px] font-bold shadow-lg shadow-primary/30 transition-transform active:scale-95 flex items-center justify-center">
             Lihat Menu
@@ -51,6 +100,20 @@
     @keyframes fadeIn {
         from { opacity: 0; transform: translateY(15px); }
         to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Animasi berjalan untuk marquee best seller */
+    @keyframes marquee {
+        0% { transform: translateX(0%); }
+        100% { transform: translateX(-50%); }
+    }
+    
+    .animate-marquee {
+        animation: marquee 25s linear infinite;
+    }
+    
+    .animate-marquee:hover {
+        animation-play-state: paused;
     }
 </style>
 @endsection

@@ -28,7 +28,34 @@ class OrderController extends Controller
         // Ambil profil restoran jika meja valid
         $setting = Setting::first();
 
-        return view('customer.welcome', compact('table', 'setting'));
+        // Ambil Menu Bestseller (Top 5 Menu Paling Banyak Dipesan)
+        // Menggunakan pluck ID agar terhindar dari error ONLY_FULL_GROUP_BY bawaan MySQL
+        $topMenuIds = DB::table('order_items')
+            ->select('menu_id', DB::raw('SUM(quantity) as total_sold'))
+            ->groupBy('menu_id')
+            ->orderByDesc('total_sold')
+            ->limit(5)
+            ->pluck('menu_id')
+            ->toArray();
+
+        $bestSellers = collect();
+        if (!empty($topMenuIds)) {
+            // Ambil data menu dan pertahankan urutannya sesuai dengan urutan penjualan terbanyak
+            $bestSellers = Menu::whereIn('id', $topMenuIds)
+                ->where('is_available', true)
+                ->get()
+                ->sortBy(function($model) use ($topMenuIds) {
+                    return array_search($model->id, $topMenuIds);
+                })
+                ->values();
+        }
+
+        // Jika belum ada penjualan, ambil menu secara acak
+        if ($bestSellers->isEmpty()) {
+            $bestSellers = Menu::where('is_available', true)->inRandomOrder()->limit(5)->get();
+        }
+
+        return view('customer.welcome', compact('table', 'setting', 'bestSellers'));
     }
 
     public function menu(Request $request)

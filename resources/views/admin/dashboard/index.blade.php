@@ -139,11 +139,11 @@
         </div>
     </div>
 
-    {{-- Charts Row 2: Menu Favorit --}}
+    {{-- Row 2: Menu Favorit --}}
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
 
-        {{-- Horizontal Bar: Menu Favorit Bulan Ini --}}
-        <div class="bg-surface p-6 rounded-xl border border-gray-100 shadow-sm">
+        {{-- Menu Favorit Bulan Ini (List View) --}}
+        <div class="bg-surface p-6 rounded-xl border border-gray-100 shadow-sm overflow-hidden flex flex-col">
             <div class="flex items-center justify-between mb-4">
                 <h3 class="text-lg font-bold text-secondary flex items-center gap-2">
                     <i data-lucide="award" class="w-5 h-5 text-primary"></i>
@@ -151,39 +151,36 @@
                 </h3>
                 <span class="text-xs bg-primary/10 text-primary font-semibold px-2 py-1 rounded-full">Top 5</span>
             </div>
-            @if(count($favLabels) > 0)
-            <div class="relative h-56">
-                <canvas id="favChart"></canvas>
-            </div>
-            @else
-            <div class="h-56 flex flex-col items-center justify-center text-gray-400">
-                <i data-lucide="bar-chart-2" class="w-12 h-12 mb-2 opacity-30"></i>
-                <p class="text-sm">Belum ada data penjualan bulan ini.</p>
-            </div>
-            @endif
-        </div>
-
-        {{-- Doughnut: Distribusi Status Order --}}
-        <div class="bg-surface p-6 rounded-xl border border-gray-100 shadow-sm">
-            <div class="flex items-center justify-between mb-4">
-                <h3 class="text-lg font-bold text-secondary flex items-center gap-2">
-                    <i data-lucide="pie-chart" class="w-5 h-5 text-primary"></i>
-                    Distribusi Menu Favorit
-                </h3>
-            </div>
-            @if(count($favLabels) > 0)
-            <div class="flex items-center gap-4">
-                <div class="relative" style="width: 160px; height: 160px; flex-shrink: 0;">
-                    <canvas id="favDoughnutChart"></canvas>
+            
+            <div class="flex-1 overflow-y-auto custom-scrollbar">
+                <div class="space-y-4">
+                    @if(count($favLabels) > 0)
+                        @foreach($favLabels as $index => $label)
+                            <div class="flex justify-between items-center p-3 hover:bg-gray-50 rounded-lg border border-gray-50 transition cursor-pointer">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-10 h-10 rounded-full bg-primary/10 text-primary flex items-center justify-center font-bold text-sm">
+                                        #{{ $index + 1 }}
+                                    </div>
+                                    <div>
+                                        <p class="text-sm font-semibold text-secondary">{{ $label }}</p>
+                                    </div>
+                                </div>
+                                <div class="text-right">
+                                    <p class="text-sm font-bold text-secondary">{{ $favData[$index] }} Porsi</p>
+                                    @if($index == 0)
+                                        <span class="inline-block mt-1 px-2 py-0.5 bg-green-100 text-success text-[10px] font-semibold rounded-full">Paling Laris</span>
+                                    @endif
+                                </div>
+                            </div>
+                        @endforeach
+                    @else
+                        <div class="text-center py-8">
+                            <i data-lucide="award" class="w-12 h-12 text-gray-300 mx-auto mb-2 opacity-50"></i>
+                            <p class="text-sm text-gray-500">Belum ada data penjualan bulan ini.</p>
+                        </div>
+                    @endif
                 </div>
-                <div class="flex-1 space-y-2" id="favLegend"></div>
             </div>
-            @else
-            <div class="h-56 flex flex-col items-center justify-center text-gray-400">
-                <i data-lucide="pie-chart" class="w-12 h-12 mb-2 opacity-30"></i>
-                <p class="text-sm">Belum ada data penjualan bulan ini.</p>
-            </div>
-            @endif
         </div>
     </div>
 
@@ -243,62 +240,6 @@
             }
         });
 
-        // --- Menu Favorit Bar Chart ---
-        const favLabels = {!! json_encode($favLabels) !!};
-        const favData   = {!! json_encode($favData) !!};
-        const colors    = ['#EAB308','#3B82F6','#10B981','#F59E0B','#8B5CF6'];
-
-        if (favLabels.length > 0) {
-            new Chart(document.getElementById('favChart').getContext('2d'), {
-                type: 'bar',
-                data: {
-                    labels: favLabels,
-                    datasets: [{
-                        label: 'Porsi Terjual',
-                        data: favData,
-                        backgroundColor: favLabels.map((_, i) => colors[i] + 'CC'),
-                        borderColor: favLabels.map((_, i) => colors[i]),
-                        borderWidth: 1.5, borderRadius: 8
-                    }]
-                },
-                options: {
-                    responsive: true, maintainAspectRatio: false, indexAxis: 'y',
-                    plugins: { legend: { display: false },
-                               tooltip: { backgroundColor: '#111827', cornerRadius: 8,
-                                          callbacks: { label: ctx => ` ${ctx.raw} porsi` } } },
-                    scales: {
-                        x: { beginAtZero: true, grid: { color: '#F3F4F6' },
-                             ticks: { font: {family:'Poppins',size:11}, color:'#6B7280' } },
-                        y: { grid: { display: false }, ticks: { font: {family:'Poppins',size:11}, color:'#374151' } }
-                    }
-                }
-            });
-
-            // Doughnut
-            new Chart(document.getElementById('favDoughnutChart').getContext('2d'), {
-                type: 'doughnut',
-                data: {
-                    labels: favLabels,
-                    datasets: [{ data: favData, backgroundColor: colors, borderWidth: 2, borderColor: '#fff' }]
-                },
-                options: {
-                    responsive: true, maintainAspectRatio: false, cutout: '65%',
-                    plugins: { legend: { display: false },
-                               tooltip: { backgroundColor: '#111827', cornerRadius: 8,
-                                          callbacks: { label: ctx => ` ${ctx.label}: ${ctx.raw} porsi` } } }
-                }
-            });
-
-            // Legend doughnut
-            const legendEl = document.getElementById('favLegend');
-            favLabels.forEach((name, i) => {
-                legendEl.innerHTML += `<div class="flex items-center gap-2 text-xs">
-                    <span style="width:10px;height:10px;border-radius:50%;background:${colors[i]};flex-shrink:0;display:inline-block;"></span>
-                    <span class="text-gray-600 truncate">${name}</span>
-                    <span class="ml-auto font-bold text-secondary">${favData[i]} pcs</span>
-                </div>`;
-            });
-        }
     });
 </script>
 @endpush

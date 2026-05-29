@@ -21,21 +21,9 @@
         </div>
     </div>
 
-    {{-- Filter Preset + Custom --}}
-    <div class="bg-surface p-4 rounded-2xl border border-gray-100 shadow-sm">
-        {{-- Preset Buttons --}}
-        <div class="flex flex-wrap gap-2 mb-4">
-            @foreach(['today' => 'Hari Ini', 'week' => 'Minggu Ini', 'month' => 'Bulan Ini', 'year' => 'Tahun Ini', 'custom' => 'Custom'] as $val => $label)
-            <a href="{{ route('admin.reports.index', array_merge(request()->except(['period','start_date','end_date']), ['period' => $val])) }}"
-               class="px-4 py-1.5 rounded-full text-sm font-semibold border transition
-               {{ $period == $val ? 'bg-primary text-white border-primary shadow-md shadow-primary/30' : 'bg-white text-gray-500 border-gray-200 hover:border-primary hover:text-primary' }}">
-               {{ $label }}
-            </a>
-            @endforeach
-        </div>
-
-        {{-- Custom Range (ditampilkan hanya jika period=custom) --}}
-        <form method="GET" action="{{ route('admin.reports.index') }}" id="customRangeForm" class="{{ $period == 'custom' ? 'flex' : 'hidden' }} flex-wrap items-end gap-4">
+    {{-- Filter Rentang Tanggal (Custom) --}}
+    <div class="bg-surface p-4 rounded-2xl border border-gray-100 shadow-sm mb-6">
+        <form method="GET" action="{{ route('admin.reports.index') }}" id="customRangeForm" class="flex flex-wrap items-end gap-4">
             <input type="hidden" name="period" value="custom">
             <div>
                 <label class="block text-xs font-semibold text-gray-500 mb-1.5 uppercase tracking-wider">Dari Tanggal</label>
