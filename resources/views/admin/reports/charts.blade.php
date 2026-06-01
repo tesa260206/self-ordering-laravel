@@ -43,7 +43,7 @@
                 <label class="block text-xs font-semibold text-gray-500 mb-1.5 uppercase tracking-wider">Sampai Tanggal</label>
                 <input type="date" name="end_date" value="{{ $endDate->format('Y-m-d') }}" class="px-4 py-2 rounded-xl border border-gray-200 focus:ring-2 focus:ring-primary/20 focus:border-primary transition outline-none text-sm">
             </div>
-            <button type="submit" class="bg-primary hover:bg-[#ca8a04] text-white px-5 py-2 rounded-xl text-sm font-semibold transition shadow-md shadow-primary/30 flex items-center gap-2 h-[38px]">
+            <button type="submit" class="bg-primary hover:bg-[#EA580C] text-white px-5 py-2 rounded-xl text-sm font-semibold transition shadow-md shadow-primary/30 flex items-center gap-2 h-[38px]">
                 <i data-lucide="filter" class="w-4 h-4"></i> Terapkan
             </button>
         </form>
@@ -148,7 +148,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const trendLabels = {!! json_encode($trendLabels) !!};
     const trendValues = {!! json_encode($trendData) !!};
 
-    const colors = ['#EAB308','#3B82F6','#10B981','#F59E0B','#8B5CF6','#EF4444','#06B6D4','#84CC16','#EC4899','#F97316'];
+    const colors = ['#F97316','#3B82F6','#10B981','#F59E0B','#8B5CF6','#EF4444','#06B6D4','#84CC16','#EC4899','#F97316'];
 
     // --- Tren Chart (Line) ---
     const trendCtx = document.getElementById('trendChart').getContext('2d');
@@ -162,11 +162,11 @@ document.addEventListener('DOMContentLoaded', function() {
             datasets: [{
                 label: 'Pendapatan (Rp)',
                 data: trendValues,
-                borderColor: '#EAB308',
+                borderColor: '#F97316',
                 backgroundColor: grad,
                 borderWidth: 2.5,
                 pointBackgroundColor: '#fff',
-                pointBorderColor: '#EAB308',
+                pointBorderColor: '#F97316',
                 pointBorderWidth: 2,
                 pointRadius: 4,
                 fill: true,
@@ -178,7 +178,7 @@ document.addEventListener('DOMContentLoaded', function() {
             plugins: {
                 legend: { display: false },
                 tooltip: {
-                    backgroundColor: '#111827', cornerRadius: 8, padding: 10,
+                    backgroundColor: '#000000', cornerRadius: 8, padding: 10,
                     displayColors: false, bodyFont: { family: 'Poppins' },
                     callbacks: { label: ctx => 'Rp ' + (ctx.raw||0).toLocaleString('id-ID') }
                 }
@@ -206,7 +206,7 @@ document.addEventListener('DOMContentLoaded', function() {
             plugins: {
                 legend: { display: false },
                 tooltip: {
-                    backgroundColor: '#111827', cornerRadius: 8,
+                    backgroundColor: '#000000', cornerRadius: 8,
                     callbacks: { label: ctx => ` ${ctx.label}: ${ctx.raw} porsi` }
                 }
             }
@@ -236,7 +236,7 @@ document.addEventListener('DOMContentLoaded', function() {
         options: {
             responsive: true, maintainAspectRatio: false, indexAxis: 'y',
             plugins: { legend: { display: false }, tooltip: {
-                backgroundColor: '#111827', cornerRadius: 8,
+                backgroundColor: '#000000', cornerRadius: 8,
                 callbacks: { label: ctx => ` ${ctx.raw} porsi` }
             }},
             scales: {
@@ -253,13 +253,13 @@ document.addEventListener('DOMContentLoaded', function() {
         data: {
             labels: menuNames,
             datasets: [{ label: 'Revenue (Rp)', data: menuRevenue,
-                backgroundColor: '#EAB308CC', borderColor: '#EAB308',
+                backgroundColor: '#F97316CC', borderColor: '#F97316',
                 borderWidth: 1.5, borderRadius: 6 }]
         },
         options: {
             responsive: true, maintainAspectRatio: false, indexAxis: 'y',
             plugins: { legend: { display: false }, tooltip: {
-                backgroundColor: '#111827', cornerRadius: 8,
+                backgroundColor: '#000000', cornerRadius: 8,
                 callbacks: { label: ctx => ' Rp ' + (ctx.raw||0).toLocaleString('id-ID') }
             }},
             scales: {

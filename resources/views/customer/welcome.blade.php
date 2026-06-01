@@ -79,7 +79,7 @@
 
     <div class="w-full pb-8 animate-[fadeIn_1s_ease-out] px-6">
         
-        <a href="{{ route('customer.menu', ['table' => $table->table_number]) }}" class="w-full bg-primary hover:bg-[#ca8a04] text-white py-4 rounded-2xl text-[17px] font-bold shadow-lg shadow-primary/30 transition-transform active:scale-95 flex items-center justify-center">
+        <a href="{{ route('customer.menu', ['table' => $table->table_number]) }}" class="w-full bg-primary hover:bg-[#EA580C] text-white py-4 rounded-2xl text-[17px] font-bold shadow-lg shadow-primary/30 transition-transform active:scale-95 flex items-center justify-center">
             Lihat Menu
         </a>
         

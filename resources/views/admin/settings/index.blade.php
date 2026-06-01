@@ -162,7 +162,7 @@
                     </div>
                 </div>
 
-                <button type="submit" id="btnSave" class="w-full bg-primary hover:bg-[#ca8a04] text-white px-5 py-3.5 rounded-xl text-sm font-bold transition shadow-md shadow-primary/30 flex justify-center items-center gap-2">
+                <button type="submit" id="btnSave" class="w-full bg-primary hover:bg-[#EA580C] text-white px-5 py-3.5 rounded-xl text-sm font-bold transition shadow-md shadow-primary/30 flex justify-center items-center gap-2">
                     <i data-lucide="save" class="w-5 h-5"></i> Simpan Pengaturan
                 </button>
 

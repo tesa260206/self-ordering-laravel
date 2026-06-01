@@ -20,7 +20,7 @@
                 
                 <svg class="absolute inset-0 w-full h-full transform -rotate-90 z-0" viewBox="0 0 100 100">
                     <circle cx="50" cy="50" r="47" fill="transparent" stroke="#F3F4F6" stroke-width="4" />
-                    <circle cx="50" cy="50" r="47" fill="transparent" stroke="#EAB308" stroke-width="4" stroke-dasharray="295" :stroke-dashoffset="getProgressOffset()" class="transition-all duration-1000 ease-out" />
+                    <circle cx="50" cy="50" r="47" fill="transparent" stroke="#F97316" stroke-width="4" stroke-dasharray="295" :stroke-dashoffset="getProgressOffset()" class="transition-all duration-1000 ease-out" />
                 </svg>
                 
                 <div x-show="currentStatus === 'pending'" style="display: none;" class="relative z-10 w-32 h-32 flex items-center justify-center">
@@ -67,7 +67,7 @@
                 </div>
 
                 <div class="relative flex items-center gap-4">
-                    <div :class="stepActive(2) ? 'bg-warning border-warning ring-4 ring-yellow-50' : (stepReached(2) ? 'bg-success border-success' : 'bg-white border-gray-300')" class="w-8 h-8 rounded-full border-2 flex items-center justify-center shadow-sm z-10 transition-all duration-500 shrink-0">
+                    <div :class="stepActive(2) ? 'bg-warning border-warning ring-4 ring-orange-50' : (stepReached(2) ? 'bg-success border-success' : 'bg-white border-gray-300')" class="w-8 h-8 rounded-full border-2 flex items-center justify-center shadow-sm z-10 transition-all duration-500 shrink-0">
                         <i x-show="stepReached(3)" data-lucide="check" class="w-4 h-4 text-white"></i>
                         <div x-show="stepActive(2)" class="w-2.5 h-2.5 bg-white rounded-full animate-pulse"></div>
                     </div>
@@ -78,7 +78,7 @@
                 </div>
 
                 <div class="relative flex items-center gap-4">
-                    <div :class="stepActive(3) ? 'bg-warning border-warning ring-4 ring-yellow-50' : (stepReached(3) ? 'bg-success border-success' : 'bg-white border-gray-300')" class="w-8 h-8 rounded-full border-2 flex items-center justify-center shadow-sm z-10 transition-all duration-500 shrink-0">
+                    <div :class="stepActive(3) ? 'bg-warning border-warning ring-4 ring-orange-50' : (stepReached(3) ? 'bg-success border-success' : 'bg-white border-gray-300')" class="w-8 h-8 rounded-full border-2 flex items-center justify-center shadow-sm z-10 transition-all duration-500 shrink-0">
                         <i x-show="stepReached(4)" data-lucide="check" class="w-4 h-4 text-white"></i>
                         <div x-show="stepActive(3)" class="w-2.5 h-2.5 bg-white rounded-full animate-pulse"></div>
                     </div>

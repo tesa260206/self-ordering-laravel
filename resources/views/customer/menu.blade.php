@@ -96,7 +96,7 @@
                 <div class="flex items-center gap-4 bg-gray-50 px-4 py-3 rounded-2xl border border-gray-100">
                     <button @click="if(detailData.qty > 1) detailData.qty--" class="text-secondary hover:text-danger transition"><i data-lucide="minus" class="w-5 h-5"></i></button>
                     <span class="font-bold text-lg w-6 text-center" x-text="detailData.qty"></span>
-                    <button @click="detailData.qty++" class="text-primary hover:text-[#ca8a04] transition"><i data-lucide="plus" class="w-5 h-5"></i></button>
+                    <button @click="detailData.qty++" class="text-primary hover:text-[#EA580C] transition"><i data-lucide="plus" class="w-5 h-5"></i></button>
                 </div>
                 
                 <button @click="confirmAddDetail()" class="flex-1 bg-primary text-white py-4 rounded-2xl font-bold shadow-lg shadow-primary/30 active:scale-95 transition">

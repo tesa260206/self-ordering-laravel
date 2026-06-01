@@ -11,7 +11,7 @@
             <p class="text-sm text-gray-500">Pantau performa restoran Anda secara realtime.</p>
         </div>
         <div>
-            <button class="bg-primary hover:bg-[#ca8a04] text-white px-4 py-2 rounded-lg text-sm font-medium transition shadow-sm flex items-center gap-2">
+            <button class="bg-primary hover:bg-[#EA580C] text-white px-4 py-2 rounded-lg text-sm font-medium transition shadow-sm flex items-center gap-2">
                 <i data-lucide="calendar" class="w-4 h-4"></i>
                 {{ now()->translatedFormat('d F Y') }}
             </button>
@@ -209,11 +209,11 @@
                 datasets: [{
                     label: 'Pendapatan (Rp)',
                     data: chartDataValues, 
-                    borderColor: '#EAB308',
+                    borderColor: '#F97316',
                     backgroundColor: gradient,
                     borderWidth: 2,
                     pointBackgroundColor: '#FFFFFF',
-                    pointBorderColor: '#EAB308',
+                    pointBorderColor: '#F97316',
                     pointBorderWidth: 2,
                     pointRadius: 4,
                     fill: true,
@@ -225,7 +225,7 @@
                 plugins: {
                     legend: { display: false },
                     tooltip: {
-                        backgroundColor: '#111827', titleFont: { family: 'Poppins', size: 13 },
+                        backgroundColor: '#000000', titleFont: { family: 'Poppins', size: 13 },
                         bodyFont: { family: 'Poppins', size: 12 }, padding: 10, cornerRadius: 8, displayColors: false,
                         callbacks: { label: ctx => 'Rp ' + (ctx.raw||0).toLocaleString('id-ID') }
                     }

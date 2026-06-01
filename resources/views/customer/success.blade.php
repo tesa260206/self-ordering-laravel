@@ -30,7 +30,7 @@
 
         <div class="w-full space-y-4">
             
-            <a href="{{ route('customer.status', $order->order_number) }}?table={{ $order->table->table_number }}" class="block w-full bg-primary hover:bg-[#ca8a04] text-white py-4 rounded-2xl font-bold transition shadow-lg shadow-primary/30 flex items-center justify-center gap-2 active:scale-95">
+            <a href="{{ route('customer.status', $order->order_number) }}?table={{ $order->table->table_number }}" class="block w-full bg-primary hover:bg-[#EA580C] text-white py-4 rounded-2xl font-bold transition shadow-lg shadow-primary/30 flex items-center justify-center gap-2 active:scale-95">
                 <i data-lucide="activity" class="w-5 h-5"></i> Pantau Status Pesanan
             </a>
             

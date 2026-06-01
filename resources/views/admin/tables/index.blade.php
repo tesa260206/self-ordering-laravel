@@ -10,7 +10,7 @@
             <h2 class="text-2xl font-extrabold text-secondary tracking-tight">Data Meja</h2>
             <p class="text-sm text-gray-500 mt-1">Kelola master data meja dan akses QR Code pelanggan.</p>
         </div>
-        <button onclick="openModal('create')" class="bg-primary hover:bg-[#ca8a04] text-white px-6 py-3 rounded-xl text-sm font-bold transition-all shadow-md shadow-primary/20 flex items-center gap-2 active:scale-95">
+        <button onclick="openModal('create')" class="bg-primary hover:bg-[#EA580C] text-white px-6 py-3 rounded-xl text-sm font-bold transition-all shadow-md shadow-primary/20 flex items-center gap-2 active:scale-95">
             <i data-lucide="plus" class="w-5 h-5"></i>
             Tambah Meja Baru
         </button>
@@ -72,7 +72,7 @@
                     </div>
                     <p class="text-secondary font-bold text-xl mb-1">Belum Ada Data Meja</p>
                     <p class="text-sm text-gray-500 mb-6">Sistem belum memiliki data meja untuk scan QR pelanggan.</p>
-                    <button onclick="openModal('create')" class="text-primary hover:text-[#ca8a04] font-bold text-sm flex items-center gap-1.5 transition">
+                    <button onclick="openModal('create')" class="text-primary hover:text-[#EA580C] font-bold text-sm flex items-center gap-1.5 transition">
                         <i data-lucide="plus" class="w-4 h-4"></i> Tambah Meja Sekarang
                     </button>
                 </div>
@@ -127,7 +127,7 @@
 
             <div class="p-6 border-t border-gray-100 bg-white flex justify-end gap-3">
                 <button type="button" onclick="closeModal()" class="px-6 py-3 rounded-xl text-sm font-bold text-gray-500 bg-gray-50 border border-gray-200 hover:bg-gray-100 hover:text-secondary transition active:scale-95">Batal</button>
-                <button type="submit" id="btnSave" class="px-6 py-3 rounded-xl text-sm font-bold text-white bg-primary hover:bg-[#ca8a04] transition shadow-md shadow-primary/20 flex items-center gap-2 active:scale-95">
+                <button type="submit" id="btnSave" class="px-6 py-3 rounded-xl text-sm font-bold text-white bg-primary hover:bg-[#EA580C] transition shadow-md shadow-primary/20 flex items-center gap-2 active:scale-95">
                     <i data-lucide="save" class="w-4 h-4"></i> Simpan Data
                 </button>
             </div>
@@ -250,7 +250,7 @@
                     <div class="p-6 bg-white border-2 border-dashed border-gray-200 rounded-[20px] mb-6 relative group">
                         <img src="${qrPath}" alt="QR Code Meja ${tableNumber}" class="w-60 h-60 object-contain relative z-10">
                     </div>
-                    <a href="${qrPath}" download="QR_Meja_${tableNumber}.svg" class="inline-flex items-center justify-center gap-2 w-full bg-primary hover:bg-[#ca8a04] text-white px-6 py-4 rounded-xl text-sm font-bold transition shadow-md shadow-primary/20 active:scale-95">
+                    <a href="${qrPath}" download="QR_Meja_${tableNumber}.svg" class="inline-flex items-center justify-center gap-2 w-full bg-primary hover:bg-[#EA580C] text-white px-6 py-4 rounded-xl text-sm font-bold transition shadow-md shadow-primary/20 active:scale-95">
                         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
                         Download QR Code
                     </a>

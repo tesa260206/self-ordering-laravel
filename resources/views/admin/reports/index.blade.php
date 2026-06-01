@@ -33,7 +33,7 @@
                 <label class="block text-xs font-semibold text-gray-500 mb-1.5 uppercase tracking-wider">Sampai Tanggal</label>
                 <input type="date" name="end_date" value="{{ $endDate->format('Y-m-d') }}" class="px-4 py-2 rounded-xl border border-gray-200 focus:ring-2 focus:ring-primary/20 focus:border-primary transition outline-none text-sm text-secondary bg-gray-50 focus:bg-white cursor-pointer">
             </div>
-            <button type="submit" class="bg-primary hover:bg-[#ca8a04] text-white px-5 py-2 rounded-xl text-sm font-semibold transition shadow-md shadow-primary/30 flex items-center gap-2 h-[38px]">
+            <button type="submit" class="bg-primary hover:bg-[#EA580C] text-white px-5 py-2 rounded-xl text-sm font-semibold transition shadow-md shadow-primary/30 flex items-center gap-2 h-[38px]">
                 <i data-lucide="filter" class="w-4 h-4"></i> Terapkan Filter
             </button>
         </form>

@@ -18,7 +18,7 @@
         </div>
         <h2 class="text-xl font-bold text-secondary mb-2">Keranjang Kosong</h2>
         <p class="text-sm text-gray-500 mb-6">Anda belum memilih menu apapun.</p>
-        <a href="{{ route('customer.menu', ['table' => $table->table_number]) }}" class="bg-primary hover:bg-[#ca8a04] text-white px-6 py-3 rounded-xl font-bold shadow-md shadow-primary/30 transition active:scale-95">Kembali Pilih Menu</a>
+        <a href="{{ route('customer.menu', ['table' => $table->table_number]) }}" class="bg-primary hover:bg-[#EA580C] text-white px-6 py-3 rounded-xl font-bold shadow-md shadow-primary/30 transition active:scale-95">Kembali Pilih Menu</a>
     </div>
 
     <div x-show="cart.length > 0" class="p-5 space-y-5">
@@ -30,7 +30,7 @@
         </div>
 
         {{-- ========== RETURNING CUSTOMER BANNER (jika ada order aktif) ========== --}}
-        <div x-show="!isCheckingOrder && hasActiveOrder" x-transition class="relative overflow-hidden bg-gradient-to-br from-primary to-yellow-500 p-5 rounded-3xl shadow-lg shadow-primary/30">
+        <div x-show="!isCheckingOrder && hasActiveOrder" x-transition class="relative overflow-hidden bg-gradient-to-br from-primary to-orange-500 p-5 rounded-3xl shadow-lg shadow-primary/30">
             {{-- Decorative circle --}}
             <div class="absolute -top-4 -right-4 w-24 h-24 bg-white/10 rounded-full"></div>
             <div class="absolute -bottom-6 -left-6 w-32 h-32 bg-white/10 rounded-full"></div>
@@ -152,7 +152,7 @@
         <button 
             @click="submitOrder()" 
             :disabled="isSubmitting" 
-            :class="isSubmitting ? 'bg-gray-300 cursor-not-allowed' : 'bg-primary hover:bg-[#ca8a04] shadow-lg shadow-primary/30 active:scale-95'" 
+            :class="isSubmitting ? 'bg-gray-300 cursor-not-allowed' : 'bg-primary hover:bg-[#EA580C] shadow-lg shadow-primary/30 active:scale-95'" 
             class="w-full text-white py-4 rounded-2xl font-bold transition flex items-center justify-center gap-2"
         >
             <template x-if="!isSubmitting">
@@ -235,7 +235,7 @@
                         icon: 'warning', 
                         title: 'Oops...', 
                         text: 'Mohon isi Nama Lengkap Anda terlebih dahulu.', 
-                        confirmButtonColor: '#EAB308', 
+                        confirmButtonColor: '#F97316', 
                         customClass: { popup: 'rounded-3xl' } 
                     });
                     return; 
@@ -264,7 +264,7 @@
                             icon: 'error', 
                             title: 'Gagal', 
                             text: xhr.responseJSON?.message || 'Gagal mengirim pesanan ke dapur.', 
-                            confirmButtonColor: '#EAB308', 
+                            confirmButtonColor: '#F97316', 
                             customClass: { popup: 'rounded-3xl' } 
                         });
                         this.isSubmitting = false;

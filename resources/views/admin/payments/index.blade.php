@@ -39,8 +39,8 @@
                             <p class="text-xs text-gray-500 mb-1">Pelanggan</p>
                             <p class="font-semibold text-secondary">{{ $order->customer_name ?? 'Tamu Umum' }}</p>
                         </div>
-                        <div class="bg-yellow-50 rounded-xl p-4 border border-yellow-100">
-                            <p class="text-xs text-yellow-700 mb-1">Total Tagihan</p>
+                        <div class="bg-orange-50 rounded-xl p-4 border border-orange-100">
+                            <p class="text-xs text-orange-700 mb-1">Total Tagihan</p>
                             <p class="text-2xl font-bold text-primary">Rp {{ number_format($order->total_amount, 0, ',', '.') }}</p>
                         </div>
                     </div>
@@ -254,7 +254,7 @@
                     title: 'Lunas!',
                     text: response.message,
                     confirmButtonText: '<i data-lucide="printer" class="w-4 h-4 inline mr-2"></i> Cetak Struk',
-                    confirmButtonColor: '#EAB308',
+                    confirmButtonColor: '#F97316',
                     allowOutsideClick: false
                 }).then((result) => {
                     if (result.isConfirmed) {

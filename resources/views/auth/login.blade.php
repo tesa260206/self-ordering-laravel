@@ -14,8 +14,8 @@
                 extend: {
                     fontFamily: { sans: ['Poppins', 'sans-serif'] },
                     colors: {
-                        primary: '#EAB308',
-                        secondary: '#111827',
+                        primary: '#F97316',
+                        secondary: '#000000',
                         surface: '#FFFFFF',
                         background: '#F9FAFB',
                     }
@@ -36,86 +36,69 @@
 </head>
 <body class="bg-background min-h-screen flex items-center justify-center">
 
-    <div class="flex w-full min-h-screen overflow-hidden">
+    <div class="w-full max-w-[420px] bg-white p-8 sm:p-10 rounded-3xl shadow-2xl shadow-gray-200/50 border border-gray-100 relative overflow-hidden my-8">
         
-        <div class="hidden lg:flex lg:w-1/2 bg-gradient-to-br from-yellow-50 to-yellow-100 flex-col items-center justify-center relative p-12">
-            
-            <div class="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
-                <div class="absolute -top-24 -left-24 w-96 h-96 bg-primary/20 rounded-full blur-3xl"></div>
-                <div class="absolute -bottom-24 -right-24 w-96 h-96 bg-primary/20 rounded-full blur-3xl"></div>
-            </div>
-
-            <div class="relative z-10 text-center mb-4">
-                <h2 class="text-4xl font-extrabold text-secondary tracking-tight">Self Order System</h2>
-                <p class="text-gray-600 mt-2 font-medium">Sistem Manajemen Restoran Terpadu</p>
-            </div>
-
-            <div class="relative z-10 w-full max-w-lg">
-                <lottie-player 
-                    src="{{ asset('Food & Beverage.json') }}" 
-                    background="transparent" 
-                    speed="1" 
-                    style="width: 100%; height: 100%;" 
-                    loop 
-                    autoplay>
-                </lottie-player>
-            </div>
+        {{-- Animasi Lottie Kecil di Atas --}}
+        <div class="w-40 h-40 mx-auto mb-4 relative">
+            <div class="absolute inset-0 bg-primary/20 rounded-full blur-2xl scale-150"></div>
+            <lottie-player 
+                src="{{ asset('Food & Beverage.json') }}" 
+                background="transparent" 
+                speed="1" 
+                style="width: 100%; height: 100%;" 
+                loop 
+                autoplay
+                class="relative z-10 scale-125">
+            </lottie-player>
         </div>
 
-        <div class="w-full lg:w-1/2 flex items-center justify-center p-8 bg-white relative">
+        {{-- Header / Judul --}}
+        <div class="text-center mb-8 relative z-10">
+            @php $setting = \App\Models\Setting::first(); @endphp
+            <h1 class="text-[28px] font-extrabold text-secondary tracking-tight mb-1">{{ $setting->resto_name ?? 'Self Order System' }}</h1>
+            <p class="text-gray-500 text-[13px] font-medium leading-relaxed">Masuk ke panel manajemen untuk mengelola bisnis restoran Anda.</p>
+        </div>
+
+        {{-- Form Login --}}
+        <form id="loginForm" class="space-y-5 relative z-10">
             
-            
-
-            <div class="w-full max-w-md">
-                <div class="mb-10">
-                    <div class="w-14 h-14 bg-primary/10 rounded-2xl flex items-center justify-center mb-6 border border-primary/20">
-                        <i data-lucide="utensils" class="w-7 h-7 text-primary"></i>
+            <div>
+                <label class="block text-[13px] font-bold text-secondary mb-1.5">Username</label>
+                <div class="relative">
+                    <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                        <i data-lucide="user" class="w-[18px] h-[18px] text-gray-400"></i>
                     </div>
-                    <h1 class="text-3xl font-bold text-secondary mb-2">Welcome Back!</h1>
-                    <p class="text-gray-500 text-sm">Masuk ke panel manajemen untuk mengelola bisnis Anda.</p>
+                    <input type="text" id="username" name="username" class="w-full pl-11 pr-4 py-3.5 rounded-xl border border-gray-200 focus:ring-2 focus:ring-primary/20 focus:border-primary transition outline-none text-sm text-secondary bg-gray-50 focus:bg-white font-medium" required placeholder="Masukkan username">
                 </div>
-
-                <form id="loginForm" class="space-y-6">
-                    
-                    <div>
-                        <label class="block text-sm font-semibold text-secondary mb-2">Username</label>
-                        <div class="relative">
-                            <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-                                <i data-lucide="user" class="w-5 h-5 text-gray-400"></i>
-                            </div>
-                            <input type="text" id="username" name="username" class="w-full pl-11 pr-4 py-3.5 rounded-xl border border-gray-200 focus:ring-2 focus:ring-primary/20 focus:border-primary transition outline-none text-secondary bg-gray-50 focus:bg-white" required placeholder="Masukkan username">
-                        </div>
-                        <p id="err_username" class="text-xs text-red-500 mt-1.5 hidden"></p>
-                    </div>
-
-                    <div>
-                        <label class="block text-sm font-semibold text-secondary mb-2">Password</label>
-                        <div class="relative" x-data="{ show: false }">
-                            <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-                                <i data-lucide="lock" class="w-5 h-5 text-gray-400"></i>
-                            </div>
-                            <input type="password" id="passwordInput" name="password" class="w-full pl-11 pr-12 py-3.5 rounded-xl border border-gray-200 focus:ring-2 focus:ring-primary/20 focus:border-primary transition outline-none text-secondary bg-gray-50 focus:bg-white" required placeholder="••••••••">
-                            <button type="button" id="togglePassword" class="absolute inset-y-0 right-0 pr-4 flex items-center text-gray-400 hover:text-primary transition">
-                                <i data-lucide="eye" id="eyeIcon" class="w-5 h-5"></i>
-                            </button>
-                        </div>
-                        <p id="err_password" class="text-xs text-red-500 mt-1.5 hidden"></p>
-                    </div>
-
-                    <button type="submit" id="btnSubmit" class="w-full bg-primary hover:bg-[#ca8a04] text-white font-bold py-3.5 rounded-xl transition duration-200 flex justify-center items-center gap-2 shadow-lg shadow-primary/30 mt-8 active:scale-95">
-                        <span id="btnText">Masuk Sekarang</span>
-                        <i data-lucide="log-in" id="btnIcon" class="w-5 h-5"></i>
-                        <svg id="btnLoader" class="hidden animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-                            <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                        </svg>
-                    </button>
-                </form>
-
-                <div class="mt-8 text-center">
-                    <p class="text-xs text-gray-400">© {{ date('Y') }} Self Order System. All rights reserved.</p>
-                </div>
+                <p id="err_username" class="text-[11px] font-bold text-red-500 mt-1.5 hidden"></p>
             </div>
+
+            <div>
+                <label class="block text-[13px] font-bold text-secondary mb-1.5">Password</label>
+                <div class="relative" x-data="{ show: false }">
+                    <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                        <i data-lucide="lock" class="w-[18px] h-[18px] text-gray-400"></i>
+                    </div>
+                    <input type="password" id="passwordInput" name="password" class="w-full pl-11 pr-12 py-3.5 rounded-xl border border-gray-200 focus:ring-2 focus:ring-primary/20 focus:border-primary transition outline-none text-sm text-secondary bg-gray-50 focus:bg-white font-medium" required placeholder="••••••••">
+                    <button type="button" id="togglePassword" class="absolute inset-y-0 right-0 pr-4 flex items-center text-gray-400 hover:text-primary transition">
+                        <i data-lucide="eye" id="eyeIcon" class="w-5 h-5"></i>
+                    </button>
+                </div>
+                <p id="err_password" class="text-[11px] font-bold text-red-500 mt-1.5 hidden"></p>
+            </div>
+
+            <button type="submit" id="btnSubmit" class="w-full bg-primary hover:bg-[#EA580C] text-white font-bold py-3.5 rounded-xl transition duration-200 flex justify-center items-center gap-2 shadow-lg shadow-primary/30 mt-8 active:scale-95 text-[15px]">
+                <span id="btnText">Masuk Sekarang</span>
+                <i data-lucide="log-in" id="btnIcon" class="w-[18px] h-[18px]"></i>
+                <svg id="btnLoader" class="hidden animate-spin h-[18px] w-[18px] text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                </svg>
+            </button>
+        </form>
+
+        <div class="mt-8 text-center relative z-10">
+            <p class="text-[11px] text-gray-400 font-bold uppercase tracking-wider">© {{ date('Y') }} Self Order System</p>
         </div>
     </div>
 

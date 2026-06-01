@@ -25,7 +25,7 @@
 
     <nav class="flex-1 overflow-y-auto px-4 py-6 space-y-1 custom-scrollbar">
         
-        <a href="{{ route('admin.dashboard') }}" class="flex items-center gap-3 px-4 py-3 rounded-xl transition group {{ request()->routeIs('admin.dashboard') ? 'bg-primary text-white shadow-md shadow-primary/20 font-semibold' : 'text-gray-500 hover:text-primary hover:bg-yellow-50 font-medium' }}">
+        <a href="{{ route('admin.dashboard') }}" class="flex items-center gap-3 px-4 py-3 rounded-xl transition group {{ request()->routeIs('admin.dashboard') ? 'bg-primary text-white shadow-md shadow-primary/20 font-semibold' : 'text-gray-500 hover:text-primary hover:bg-orange-50 font-medium' }}">
             <i data-lucide="home" class="w-5 h-5 group-hover:scale-110 transition-transform"></i>
             <span class="text-sm">Beranda</span>
         </a>
@@ -33,13 +33,13 @@
         <div class="pt-5 pb-2">
             <p class="px-4 text-[11px] font-semibold text-gray-400 uppercase tracking-wider mb-2">Data Master</p>
             
-            <a href="{{ route('admin.tables.index') }}" class="flex items-center gap-3 px-4 py-2.5 rounded-xl transition group {{ request()->routeIs('admin.tables.*') ? 'bg-primary text-white shadow-md shadow-primary/20 font-semibold' : 'text-gray-500 hover:text-primary hover:bg-yellow-50 font-medium' }}">
+            <a href="{{ route('admin.tables.index') }}" class="flex items-center gap-3 px-4 py-2.5 rounded-xl transition group {{ request()->routeIs('admin.tables.*') ? 'bg-primary text-white shadow-md shadow-primary/20 font-semibold' : 'text-gray-500 hover:text-primary hover:bg-orange-50 font-medium' }}">
                 <i data-lucide="layout-grid" class="w-5 h-5 group-hover:scale-110 transition-transform"></i>
                 <span class="text-sm">Meja</span>
             </a>
 
             <div x-data="{ openMenu: {{ request()->routeIs('admin.categories.*', 'admin.menus.*') ? 'true' : 'false' }} }">
-                <button @click="openMenu = !openMenu" class="w-full flex items-center justify-between px-4 py-2.5 rounded-xl transition group {{ request()->routeIs('admin.categories.*', 'admin.menus.*') ? 'text-primary bg-yellow-50 font-semibold' : 'text-gray-500 hover:text-primary hover:bg-yellow-50 font-medium' }}">
+                <button @click="openMenu = !openMenu" class="w-full flex items-center justify-between px-4 py-2.5 rounded-xl transition group {{ request()->routeIs('admin.categories.*', 'admin.menus.*') ? 'text-primary bg-orange-50 font-semibold' : 'text-gray-500 hover:text-primary hover:bg-orange-50 font-medium' }}">
                     <div class="flex items-center gap-3">
                         <i data-lucide="list-ordered" class="w-5 h-5 group-hover:scale-110 transition-transform"></i>
                         <span class="text-sm">Menu Makanan</span>
@@ -63,17 +63,17 @@
         <div class="pt-3 pb-2">
             <p class="px-4 text-[11px] font-semibold text-gray-400 uppercase tracking-wider mb-2">Transaksi</p>
             
-            <a href="{{ route('admin.table-status.index') }}" class="flex items-center gap-3 px-4 py-2.5 rounded-xl transition group {{ request()->routeIs('admin.table-status.*') ? 'bg-primary text-white shadow-md shadow-primary/20 font-semibold' : 'text-gray-500 hover:text-primary hover:bg-yellow-50 font-medium' }}">
+            <a href="{{ route('admin.table-status.index') }}" class="flex items-center gap-3 px-4 py-2.5 rounded-xl transition group {{ request()->routeIs('admin.table-status.*') ? 'bg-primary text-white shadow-md shadow-primary/20 font-semibold' : 'text-gray-500 hover:text-primary hover:bg-orange-50 font-medium' }}">
                 <i data-lucide="clipboard-list" class="w-5 h-5 group-hover:scale-110 transition-transform"></i>
                 <span class="text-sm">Status Meja</span>
             </a>
             
-            <a href="{{ route('admin.orders.index') }}" class="flex items-center gap-3 px-4 py-2.5 rounded-xl transition group {{ request()->routeIs('admin.orders.*') ? 'bg-primary text-white shadow-md shadow-primary/20 font-semibold' : 'text-gray-500 hover:text-primary hover:bg-yellow-50 font-medium' }}">
+            <a href="{{ route('admin.orders.index') }}" class="flex items-center gap-3 px-4 py-2.5 rounded-xl transition group {{ request()->routeIs('admin.orders.*') ? 'bg-primary text-white shadow-md shadow-primary/20 font-semibold' : 'text-gray-500 hover:text-primary hover:bg-orange-50 font-medium' }}">
                 <i data-lucide="monitor-play" class="w-5 h-5 group-hover:scale-110 transition-transform"></i>
                 <span class="text-sm">Status Pesanan</span>
             </a>
             
-            <a href="{{ route('admin.payments.index') }}" class="flex items-center gap-3 px-4 py-2.5 rounded-xl transition group {{ request()->routeIs('admin.payments.*') ? 'bg-primary text-white shadow-md shadow-primary/20 font-semibold' : 'text-gray-500 hover:text-primary hover:bg-yellow-50 font-medium' }}">
+            <a href="{{ route('admin.payments.index') }}" class="flex items-center gap-3 px-4 py-2.5 rounded-xl transition group {{ request()->routeIs('admin.payments.*') ? 'bg-primary text-white shadow-md shadow-primary/20 font-semibold' : 'text-gray-500 hover:text-primary hover:bg-orange-50 font-medium' }}">
                 <i data-lucide="wallet" class="w-5 h-5 group-hover:scale-110 transition-transform"></i>
                 <span class="text-sm">Pembayaran</span>
             </a>
@@ -81,7 +81,7 @@
 
         <div class="pt-3 pb-2">
             <p class="px-4 text-[11px] font-semibold text-gray-400 uppercase tracking-wider mb-2">Pengguna</p>
-            <a href="{{ route('admin.users.index') }}" class="flex items-center gap-3 px-4 py-2.5 rounded-xl transition group {{ request()->routeIs('admin.users.*') ? 'bg-primary text-white shadow-md shadow-primary/20 font-semibold' : 'text-gray-500 hover:text-primary hover:bg-yellow-50 font-medium' }}">
+            <a href="{{ route('admin.users.index') }}" class="flex items-center gap-3 px-4 py-2.5 rounded-xl transition group {{ request()->routeIs('admin.users.*') ? 'bg-primary text-white shadow-md shadow-primary/20 font-semibold' : 'text-gray-500 hover:text-primary hover:bg-orange-50 font-medium' }}">
                 <i data-lucide="users" class="w-5 h-5 group-hover:scale-110 transition-transform"></i>
                 <span class="text-sm">Pengguna</span>
             </a>
@@ -89,11 +89,11 @@
 
         <div class="pt-3 pb-2">
             <p class="px-4 text-[11px] font-semibold text-gray-400 uppercase tracking-wider mb-2">Laporan</p>
-            <a href="{{ route('admin.reports.index') }}" class="flex items-center gap-3 px-4 py-2.5 rounded-xl transition group {{ request()->routeIs('admin.reports.index') ? 'bg-primary text-white shadow-md shadow-primary/20 font-semibold' : 'text-gray-500 hover:text-primary hover:bg-yellow-50 font-medium' }}">
+            <a href="{{ route('admin.reports.index') }}" class="flex items-center gap-3 px-4 py-2.5 rounded-xl transition group {{ request()->routeIs('admin.reports.index') ? 'bg-primary text-white shadow-md shadow-primary/20 font-semibold' : 'text-gray-500 hover:text-primary hover:bg-orange-50 font-medium' }}">
                 <i data-lucide="bar-chart-2" class="w-5 h-5 group-hover:scale-110 transition-transform"></i>
                 <span class="text-sm">Laporan Transaksi</span>
             </a>
-            <a href="{{ route('admin.reports.charts') }}" class="flex items-center gap-3 px-4 py-2.5 rounded-xl transition group {{ request()->routeIs('admin.reports.charts') ? 'bg-primary text-white shadow-md shadow-primary/20 font-semibold' : 'text-gray-500 hover:text-primary hover:bg-yellow-50 font-medium' }}">
+            <a href="{{ route('admin.reports.charts') }}" class="flex items-center gap-3 px-4 py-2.5 rounded-xl transition group {{ request()->routeIs('admin.reports.charts') ? 'bg-primary text-white shadow-md shadow-primary/20 font-semibold' : 'text-gray-500 hover:text-primary hover:bg-orange-50 font-medium' }}">
                 <i data-lucide="line-chart" class="w-5 h-5 group-hover:scale-110 transition-transform"></i>
                 <span class="text-sm">Analisa Visual</span>
             </a>
@@ -101,7 +101,7 @@
 
         <div class="pt-3 pb-2">
             <p class="px-4 text-[11px] font-semibold text-gray-400 uppercase tracking-wider mb-2">Pengaturan</p>
-            <a href="{{ route('admin.settings.index') }}" class="flex items-center gap-3 px-4 py-2.5 rounded-xl transition group {{ request()->routeIs('admin.settings.*') ? 'bg-primary text-white shadow-md shadow-primary/20 font-semibold' : 'text-gray-500 hover:text-primary hover:bg-yellow-50 font-medium' }}">
+            <a href="{{ route('admin.settings.index') }}" class="flex items-center gap-3 px-4 py-2.5 rounded-xl transition group {{ request()->routeIs('admin.settings.*') ? 'bg-primary text-white shadow-md shadow-primary/20 font-semibold' : 'text-gray-500 hover:text-primary hover:bg-orange-50 font-medium' }}">
                 <i data-lucide="settings" class="w-5 h-5 group-hover:scale-110 transition-transform"></i>
                 <span class="text-sm">Pengaturan Sistem</span>
             </a>

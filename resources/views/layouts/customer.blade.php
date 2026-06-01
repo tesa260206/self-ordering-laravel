@@ -15,8 +15,8 @@
                 extend: {
                     fontFamily: { sans: ['Poppins', 'sans-serif'] },
                     colors: {
-                        primary: '#EAB308',
-                        secondary: '#111827',
+                        primary: '#F97316',
+                        secondary: '#000000',
                         surface: '#FFFFFF',
                         background: '#F9FAFB',
                         danger: '#EF4444',
@@ -136,7 +136,7 @@
                     title: '<span class="text-secondary font-bold">Belum Ada Pesanan</span>',
                     html: '<p class="text-sm text-gray-500">Anda belum memiliki pesanan aktif dari perangkat ini. Yuk lihat katalog menu!</p>',
                     confirmButtonText: 'Lihat Menu',
-                    confirmButtonColor: '#EAB308',
+                    confirmButtonColor: '#F97316',
                     customClass: { popup: 'rounded-3xl shadow-2xl border border-gray-100 p-4' }
                 }).then((result) => {
                     if (result.isConfirmed) {

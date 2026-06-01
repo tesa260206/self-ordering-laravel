@@ -29,7 +29,7 @@
         }
         
         .print-btn {
-            background-color: #EAB308; color: #fff; padding: 10px 20px; border: none; 
+            background-color: #F97316; color: #fff; padding: 10px 20px; border: none; 
             border-radius: 5px; font-weight: bold; cursor: pointer; margin-bottom: 15px;
             font-family: Arial, sans-serif; display: block; width: 100%; text-transform: uppercase;
         }

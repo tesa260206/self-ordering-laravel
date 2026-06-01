@@ -8,7 +8,7 @@
             <h2 class="text-2xl font-bold text-secondary">Kategori Menu</h2>
             <p class="text-sm text-gray-500">Kelola kelompok menu makanan/minuman.</p>
         </div>
-        <button onclick="openModal('create')" class="bg-primary hover:bg-[#ca8a04] text-white px-5 py-2.5 rounded-xl text-sm font-semibold transition shadow-md shadow-primary/30 flex items-center gap-2">
+        <button onclick="openModal('create')" class="bg-primary hover:bg-[#EA580C] text-white px-5 py-2.5 rounded-xl text-sm font-semibold transition shadow-md shadow-primary/30 flex items-center gap-2">
             <i data-lucide="plus" class="w-4 h-4"></i> Tambah Kategori
         </button>
     </div>
@@ -82,7 +82,7 @@
             </div>
             <div class="p-5 border-t border-gray-100 bg-gray-50/50 flex justify-end gap-3">
                 <button type="button" onclick="closeModal()" class="px-5 py-2.5 rounded-xl text-sm font-semibold text-gray-600 bg-white border border-gray-200 hover:bg-gray-50 transition">Batal</button>
-                <button type="submit" id="btnSave" class="px-5 py-2.5 rounded-xl text-sm font-semibold text-white bg-primary hover:bg-[#ca8a04] transition shadow-md shadow-primary/30 flex items-center gap-2"><i data-lucide="save" class="w-4 h-4"></i> Simpan</button>
+                <button type="submit" id="btnSave" class="px-5 py-2.5 rounded-xl text-sm font-semibold text-white bg-primary hover:bg-[#EA580C] transition shadow-md shadow-primary/30 flex items-center gap-2"><i data-lucide="save" class="w-4 h-4"></i> Simpan</button>
             </div>
         </form>
     </div>

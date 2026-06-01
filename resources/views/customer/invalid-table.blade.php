@@ -18,9 +18,9 @@
         Maaf, kami tidak dapat menemukan data meja dari QR Code yang Anda scan. Silakan coba scan ulang QR Code yang ada di meja Anda.
     </p>
 
-    <div class="p-4 bg-yellow-50 border border-yellow-100 rounded-2xl w-full text-left flex gap-3">
+    <div class="p-4 bg-orange-50 border border-orange-100 rounded-2xl w-full text-left flex gap-3">
         <i data-lucide="info" class="w-5 h-5 text-warning shrink-0 mt-0.5"></i>
-        <p class="text-xs text-yellow-800">
+        <p class="text-xs text-orange-800">
             Jika masalah berlanjut, mohon informasikan kepada pelayan atau kasir kami untuk mendapatkan bantuan.
         </p>
     </div>

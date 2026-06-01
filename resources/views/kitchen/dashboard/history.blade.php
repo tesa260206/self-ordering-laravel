@@ -23,7 +23,7 @@
                 <i data-lucide="search" class="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-kds_text_muted"></i>
                 <input type="text" name="search" value="{{ request('search') }}" placeholder="Cari pesanan..." class="w-full bg-kds_bg border border-kds_border rounded-xl pl-10 pr-4 py-2 text-sm text-kds_text focus:border-kds_primary outline-none transition">
             </div>
-            <button type="submit" class="bg-kds_primary hover:bg-[#ca8a04] text-black font-bold px-4 py-2 rounded-xl transition flex items-center gap-2">
+            <button type="submit" class="bg-kds_primary hover:bg-[#EA580C] text-black font-bold px-4 py-2 rounded-xl transition flex items-center gap-2">
                 <i data-lucide="filter" class="w-4 h-4"></i> Filter
             </button>
             <a href="{{ route('kitchen.history') }}" class="text-kds_text_muted hover:text-white px-3 py-2 text-sm font-medium transition">
@@ -106,9 +106,9 @@
 <style>
     nav[aria-label="Pagination"] p { color: #9CA3AF !important; font-size: 12px; }
     nav[aria-label="Pagination"] span[aria-current="page"] span { 
-        background-color: #EAB308 !important; 
+        background-color: #F97316 !important; 
         color: #000 !important; 
-        border-color: #EAB308 !important; 
+        border-color: #F97316 !important; 
     }
     nav[aria-label="Pagination"] a, nav[aria-label="Pagination"] span.relative { 
         background-color: #1E1E1E !important; 

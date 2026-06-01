@@ -19,8 +19,8 @@
                         sans: ['Poppins', 'sans-serif'],
                     },
                     colors: {
-                        primary: '#EAB308',   // Kuning tua elegan
-                        secondary: '#111827', // Hitam gelap
+                        primary: '#F97316',   // Kuning tua elegan
+                        secondary: '#000000', // Hitam gelap
                         surface: '#FFFFFF',   // Putih
                         background: '#F9FAFB',// Abu terang
                         success: '#22C55E',   // Hijau
@@ -55,8 +55,8 @@
         /* Custom Scrollbar */
         ::-webkit-scrollbar { width: 6px; height: 6px; }
         ::-webkit-scrollbar-track { background: transparent; }
-        ::-webkit-scrollbar-thumb { background: #EAB308; border-radius: 10px; }
-        ::-webkit-scrollbar-thumb:hover { background: #ca8a04; }
+        ::-webkit-scrollbar-thumb { background: #F97316; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: #EA580C; }
 
         /* AJAX Loading Overlay (Default hidden) */
         #ajax-loader { display: none; }
@@ -147,7 +147,7 @@
                     icon: 'warning',
                     showCancelButton: true,
                     confirmButtonColor: '#EF4444',
-                    cancelButtonColor: '#111827',
+                    cancelButtonColor: '#000000',
                     confirmButtonText: 'Ya, Hapus!',
                     cancelButtonText: 'Batal'
                 }).then((result) => {

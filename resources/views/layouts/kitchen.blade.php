@@ -17,7 +17,7 @@
                         kds_bg: '#121212',       // Background Utama Gelap
                         kds_surface: '#1E1E1E',  // Card / Sidebar Gelap
                         kds_border: '#2C2C2C',
-                        kds_primary: '#EAB308',  // Kuning Accent
+                        kds_primary: '#F97316',  // Kuning Accent
                         kds_danger: '#EF4444',   // Merah (Terima Order)
                         kds_success: '#22C55E',  // Hijau (Siap)
                         kds_text: '#E5E7EB',     // Teks Putih Terang
@@ -38,7 +38,7 @@
         ::-webkit-scrollbar { width: 6px; height: 6px; }
         ::-webkit-scrollbar-track { background: #121212; }
         ::-webkit-scrollbar-thumb { background: #333; border-radius: 10px; }
-        ::-webkit-scrollbar-thumb:hover { background: #EAB308; }
+        ::-webkit-scrollbar-thumb:hover { background: #F97316; }
         
         .swal2-popup { background: #1E1E1E !important; color: #E5E7EB !important; border: 1px solid #2C2C2C; }
         .swal2-title { color: #E5E7EB !important; }

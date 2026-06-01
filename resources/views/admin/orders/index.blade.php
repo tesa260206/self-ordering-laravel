@@ -67,7 +67,7 @@
                         </td>
                         <td class="px-6 py-4 text-center">
                             <div class="flex items-center justify-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
-                                <button onclick="viewDetail({{ $order->id }})" class="p-1.5 text-primary bg-yellow-50 hover:bg-primary hover:text-white transition rounded-lg" title="Detail Pesanan">
+                                <button onclick="viewDetail({{ $order->id }})" class="p-1.5 text-primary bg-orange-50 hover:bg-primary hover:text-white transition rounded-lg" title="Detail Pesanan">
                                     <i data-lucide="eye" class="w-4 h-4"></i>
                                 </button>
                                 @if(!in_array($order->status, ['completed', 'cancelled']))
@@ -149,7 +149,7 @@
             </div>
             <div class="p-5 border-t border-gray-100 bg-gray-50/50 flex justify-end gap-3">
                 <button type="button" onclick="closeStatusModal()" class="px-5 py-2.5 rounded-xl text-sm font-semibold text-gray-600 bg-white border border-gray-200 hover:bg-gray-100 transition">Batal</button>
-                <button type="submit" id="btnSaveStatus" class="px-5 py-2.5 rounded-xl text-sm font-semibold text-white bg-primary hover:bg-[#ca8a04] transition shadow-md shadow-primary/30 flex items-center gap-2">
+                <button type="submit" id="btnSaveStatus" class="px-5 py-2.5 rounded-xl text-sm font-semibold text-white bg-primary hover:bg-[#EA580C] transition shadow-md shadow-primary/30 flex items-center gap-2">
                     <i data-lucide="check" class="w-4 h-4"></i> Terapkan
                 </button>
             </div>
