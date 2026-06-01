@@ -62,7 +62,7 @@
                             @endif
                         </td>
                         <td class="px-6 py-4 text-center">
-                            <div class="flex items-center justify-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                            <div class="flex items-center justify-center gap-2 transition-opacity">
                                 <button onclick="openModal('edit', {{ $user->id }})" class="p-1.5 text-blue-500 bg-blue-50 hover:bg-blue-500 hover:text-white transition rounded-lg" title="Edit">
                                     <i data-lucide="edit-2" class="w-4 h-4"></i>
                                 </button>

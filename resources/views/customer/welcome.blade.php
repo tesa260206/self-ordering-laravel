@@ -33,7 +33,7 @@
     <div class="w-full overflow-hidden mb-8 animate-[fadeIn_0.9s_ease-out]">
         <div class="mb-3 text-left px-6 flex items-center gap-2">
             <i data-lucide="star" class="w-4 h-4 text-primary fill-primary"></i>
-            <span class="text-xs font-bold text-secondary uppercase tracking-wider">Paling Banyak Dipesan</span>
+            <span class="text-xs font-bold text-secondary uppercase tracking-wider">Menu Best Seller</span>
         </div>
         
         <div class="flex w-max animate-marquee">

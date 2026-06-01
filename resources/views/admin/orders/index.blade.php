@@ -66,7 +66,7 @@
                             </span>
                         </td>
                         <td class="px-6 py-4 text-center">
-                            <div class="flex items-center justify-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                            <div class="flex items-center justify-center gap-2 transition-opacity">
                                 <button onclick="viewDetail({{ $order->id }})" class="p-1.5 text-primary bg-orange-50 hover:bg-primary hover:text-white transition rounded-lg" title="Detail Pesanan">
                                     <i data-lucide="eye" class="w-4 h-4"></i>
                                 </button>
