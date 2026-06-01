@@ -45,8 +45,13 @@
 
     {{-- Header Laporan --}}
     <div class="header">
-        @if($setting && $setting->logo)
-            <img src="{{ public_path('storage/' . $setting->logo) }}" class="logo" alt="Logo">
+        @if($setting && $setting->logo && Storage::disk('public')->exists($setting->logo))
+            @php
+                $imagePath = storage_path('app/public/' . $setting->logo);
+                $imageData = base64_encode(file_get_contents($imagePath));
+                $src = 'data:'.mime_content_type($imagePath).';base64,'.$imageData;
+            @endphp
+            <img src="{{ $src }}" class="logo" alt="Logo">
         @endif
         <h1>{{ $setting->resto_name ?? 'Restoran' }}</h1>
         @if($setting && $setting->address)
