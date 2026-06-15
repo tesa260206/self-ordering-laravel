@@ -76,30 +76,7 @@ class ReportController extends Controller
             ->take(5)
             ->get();
 
-        return view('admin.reports.index', compact(
-            'orders', 'totalRevenue', 'totalOrders', 'averageOrderValue',
-            'topMenus', 'startDate', 'endDate', 'period'
-        ));
-    }
-
-    public function charts(Request $request)
-    {
-        [$startDate, $endDate] = $this->getDateRange($request);
-        $period = $request->period ?? 'month';
-
-        // Top 5 Menu untuk bar chart
-        $topMenus = OrderItem::select('menu_id', DB::raw('SUM(quantity) as total_sold'), DB::raw('SUM(subtotal) as total_revenue'))
-            ->whereHas('order', function($q) use ($startDate, $endDate) {
-                $q->where('payment_status', 'paid')
-                  ->whereBetween('created_at', [$startDate, $endDate]);
-            })
-            ->with('menu')
-            ->groupBy('menu_id')
-            ->orderByDesc('total_sold')
-            ->take(10)
-            ->get();
-
-        // Trend penjualan harian dalam rentang
+        // 4. Trend penjualan harian dalam rentang
         $days = $startDate->diffInDays($endDate) + 1;
         $maxDays = min($days, 30); // Maksimal 30 hari di chart
         $trendLabels = [];
@@ -113,15 +90,9 @@ class ReportController extends Controller
                                   ->sum('total_amount');
         }
 
-        // Ringkasan
-        $totalRevenue      = Order::where('payment_status', 'paid')->whereBetween('created_at', [$startDate, $endDate])->sum('total_amount');
-        $totalOrders       = Order::where('payment_status', 'paid')->whereBetween('created_at', [$startDate, $endDate])->count();
-        $averageOrderValue = $totalOrders > 0 ? $totalRevenue / $totalOrders : 0;
-
-        return view('admin.reports.charts', compact(
-            'topMenus', 'trendLabels', 'trendData',
-            'totalRevenue', 'totalOrders', 'averageOrderValue',
-            'startDate', 'endDate', 'period'
+        return view('admin.reports.index', compact(
+            'orders', 'totalRevenue', 'totalOrders', 'averageOrderValue',
+            'topMenus', 'trendLabels', 'trendData', 'startDate', 'endDate', 'period'
         ));
     }
 

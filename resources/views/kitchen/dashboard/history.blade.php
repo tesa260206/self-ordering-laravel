@@ -1,82 +1,82 @@
 @extends('layouts.kitchen')
-@section('title', 'KDS - Riwayat Masakan')
+@section('title', 'Dapur - Riwayat Masakan')
 
 @section('content')
 <div class="space-y-6 flex flex-col h-full">
 
-    <div class="bg-kds_surface p-5 rounded-2xl border border-kds_border shadow-lg flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+    <div class="bg-surface p-5 rounded-2xl border border-gray-100 shadow-sm flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
         <div class="flex items-center gap-4">
-            <div class="w-12 h-12 bg-gray-800 text-gray-400 rounded-xl flex items-center justify-center border border-kds_border">
+            <div class="w-12 h-12 bg-gray-100 text-gray-500 rounded-xl flex items-center justify-center border border-gray-200">
                 <i data-lucide="history" class="w-6 h-6"></i>
             </div>
             <div>
-                <h2 class="text-xl font-bold text-kds_text">Riwayat Masakan</h2>
-                <p class="text-xs text-kds_text_muted">Rekapitulasi pesanan yang telah diselesaikan.</p>
+                <h2 class="text-xl font-bold text-secondary">Riwayat Masakan</h2>
+                <p class="text-xs text-gray-500">Rekapitulasi pesanan yang telah diselesaikan.</p>
             </div>
         </div>
         
         <form method="GET" action="{{ route('kitchen.history') }}" class="flex flex-wrap items-center gap-3 w-full md:w-auto">
             <div class="relative">
-                <input type="date" name="date" value="{{ request('date', now()->format('Y-m-d')) }}" class="bg-kds_bg border border-kds_border rounded-xl px-4 py-2 text-sm text-kds_text focus:border-kds_primary outline-none transition cursor-pointer">
+                <input type="date" name="date" value="{{ request('date', now()->format('Y-m-d')) }}" class="bg-gray-50 border border-gray-200 rounded-xl px-4 py-2 text-sm text-secondary focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition cursor-pointer">
             </div>
             <div class="relative w-full md:w-56">
-                <i data-lucide="search" class="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-kds_text_muted"></i>
-                <input type="text" name="search" value="{{ request('search') }}" placeholder="Cari pesanan..." class="w-full bg-kds_bg border border-kds_border rounded-xl pl-10 pr-4 py-2 text-sm text-kds_text focus:border-kds_primary outline-none transition">
+                <i data-lucide="search" class="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400"></i>
+                <input type="text" name="search" value="{{ request('search') }}" placeholder="Cari pesanan..." class="w-full bg-gray-50 border border-gray-200 rounded-xl pl-10 pr-4 py-2 text-sm text-secondary focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition">
             </div>
-            <button type="submit" class="bg-kds_primary hover:bg-[#EA580C] text-black font-bold px-4 py-2 rounded-xl transition flex items-center gap-2">
+            <button type="submit" class="bg-primary hover:bg-[#EA580C] text-white font-bold px-4 py-2 rounded-xl transition flex items-center gap-2 shadow-md shadow-primary/20">
                 <i data-lucide="filter" class="w-4 h-4"></i> Filter
             </button>
-            <a href="{{ route('kitchen.history') }}" class="text-kds_text_muted hover:text-white px-3 py-2 text-sm font-medium transition">
+            <a href="{{ route('kitchen.history') }}" class="text-gray-400 hover:text-secondary px-3 py-2 text-sm font-medium transition">
                 Reset
             </a>
         </form>
     </div>
 
-    <div class="flex-1 bg-kds_surface rounded-2xl border border-kds_border overflow-hidden flex flex-col shadow-2xl">
+    <div class="flex-1 bg-surface rounded-2xl border border-gray-100 overflow-hidden flex flex-col shadow-sm">
         <div class="overflow-x-auto flex-1 custom-scrollbar">
             <table class="w-full text-left border-collapse whitespace-nowrap">
-                <thead class="sticky top-0 bg-[#1A1A1A] z-10">
-                    <tr class="border-b border-kds_border">
-                        <th class="px-6 py-4 text-xs font-bold text-kds_text_muted uppercase tracking-widest w-48">Waktu Selesai</th>
-                        <th class="px-6 py-4 text-xs font-bold text-kds_text_muted uppercase tracking-widest">Detail Pesanan</th>
-                        <th class="px-6 py-4 text-xs font-bold text-kds_text_muted uppercase tracking-widest text-center">Item</th>
-                        <th class="px-6 py-4 text-xs font-bold text-kds_text_muted uppercase tracking-widest text-center">Status</th>
+                <thead class="sticky top-0 bg-gray-50 z-10">
+                    <tr class="border-b border-gray-100">
+                        <th class="px-6 py-4 text-xs font-bold text-gray-500 uppercase tracking-widest w-48">Waktu Selesai</th>
+                        <th class="px-6 py-4 text-xs font-bold text-gray-500 uppercase tracking-widest">Detail Pesanan</th>
+                        <th class="px-6 py-4 text-xs font-bold text-gray-500 uppercase tracking-widest text-center">Item</th>
+                        <th class="px-6 py-4 text-xs font-bold text-gray-500 uppercase tracking-widest text-center">Status</th>
                     </tr>
                 </thead>
-                <tbody class="divide-y divide-kds_border">
+                <tbody class="divide-y divide-gray-100">
                     @forelse($orders as $order)
-                    <tr class="hover:bg-white/[0.02] transition">
+                    <tr class="hover:bg-gray-50/50 transition">
                         
                         <td class="px-6 py-4">
-                            <span class="text-sm font-bold text-kds_text">{{ $order->updated_at->format('d M Y') }}</span>
-                            <p class="text-[11px] text-kds_text_muted mt-0.5">{{ $order->updated_at->format('H:i') }} WIB</p>
+                            <span class="text-sm font-bold text-secondary">{{ $order->updated_at->format('d M Y') }}</span>
+                            <p class="text-[11px] text-gray-400 mt-0.5">{{ $order->updated_at->format('H:i') }} WIB</p>
                         </td>
 
                         <td class="px-6 py-4">
                             <div class="flex items-center gap-3">
-                                <div class="w-10 h-10 rounded-lg bg-kds_bg border border-kds_border flex items-center justify-center text-kds_text font-bold shrink-0">
+                                <div class="w-10 h-10 rounded-lg bg-gray-50 border border-gray-200 flex items-center justify-center text-secondary font-bold shrink-0">
                                     {{ $order->table->table_number }}
                                 </div>
                                 <div>
-                                    <p class="font-bold text-kds_text text-sm">{{ $order->order_number }}</p>
-                                    <p class="text-[11px] text-kds_text_muted">{{ $order->customer_name ?? 'Tamu Umum' }}</p>
+                                    <p class="font-bold text-secondary text-sm">{{ $order->order_number }}</p>
+                                    <p class="text-[11px] text-gray-400">{{ $order->customer_name ?? 'Tamu Umum' }}</p>
                                 </div>
                             </div>
                         </td>
 
                         <td class="px-6 py-4 text-center">
-                            <span class="bg-gray-800 text-kds_text px-3 py-1 rounded-md text-xs font-bold border border-kds_border">
+                            <span class="bg-gray-100 text-secondary px-3 py-1 rounded-md text-xs font-bold border border-gray-200">
                                 {{ $order->items->sum('quantity') }} Porsi
                             </span>
                         </td>
 
                         <td class="px-6 py-4 text-center">
                             @if($order->status === 'completed')
-                                <span class="inline-flex items-center gap-1.5 px-3 py-1 bg-kds_success/10 text-kds_success border border-kds_success/20 rounded-full text-[10px] font-bold uppercase tracking-wider">
+                                <span class="inline-flex items-center gap-1.5 px-3 py-1 bg-green-50 text-success border border-green-100 rounded-full text-[10px] font-bold uppercase tracking-wider">
                                     <i data-lucide="check-check" class="w-3 h-3"></i> Selesai
                                 </span>
                             @else
-                                <span class="inline-flex items-center gap-1.5 px-3 py-1 bg-kds_danger/10 text-kds_danger border border-kds_danger/20 rounded-full text-[10px] font-bold uppercase tracking-wider">
+                                <span class="inline-flex items-center gap-1.5 px-3 py-1 bg-red-50 text-danger border border-red-100 rounded-full text-[10px] font-bold uppercase tracking-wider">
                                     <i data-lucide="x-circle" class="w-3 h-3"></i> Dibatalkan
                                 </span>
                             @endif
@@ -85,10 +85,10 @@
                     @empty
                     <tr>
                         <td colspan="4" class="px-6 py-20 text-center">
-                            <div class="flex flex-col items-center opacity-30">
+                            <div class="flex flex-col items-center text-gray-300">
                                 <i data-lucide="folder-search" class="w-16 h-16 mb-4"></i>
                                 <p class="text-lg font-medium">Tidak ada riwayat masakan.</p>
-                                <p class="text-xs">Coba ubah tanggal atau kata kunci pencarian.</p>
+                                <p class="text-xs text-gray-400">Coba ubah tanggal atau kata kunci pencarian.</p>
                             </div>
                         </td>
                     </tr>
@@ -97,7 +97,7 @@
             </table>
         </div>
         
-        <div class="p-4 bg-[#1A1A1A] border-t border-kds_border">
+        <div class="p-4 bg-gray-50 border-t border-gray-100">
             {{ $orders->links() }}
         </div>
     </div>
@@ -107,16 +107,16 @@
     nav[aria-label="Pagination"] p { color: #9CA3AF !important; font-size: 12px; }
     nav[aria-label="Pagination"] span[aria-current="page"] span { 
         background-color: #F97316 !important; 
-        color: #000 !important; 
+        color: #fff !important; 
         border-color: #F97316 !important; 
     }
     nav[aria-label="Pagination"] a, nav[aria-label="Pagination"] span.relative { 
-        background-color: #1E1E1E !important; 
-        border-color: #2C2C2C !important; 
-        color: #E5E7EB !important; 
+        background-color: #FFFFFF !important; 
+        border-color: #E5E7EB !important; 
+        color: #374151 !important; 
     }
     nav[aria-label="Pagination"] a:hover { 
-        background-color: #2C2C2C !important; 
+        background-color: #F9FAFB !important; 
     }
     nav[aria-label="Pagination"] svg { stroke: currentColor; }
 </style>

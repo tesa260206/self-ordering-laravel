@@ -12,9 +12,6 @@
             <p class="text-sm text-gray-500">Analisa performa penjualan dan menu terlaris restoran.</p>
         </div>
         <div class="flex gap-2 flex-wrap">
-            <a href="{{ route('admin.reports.charts', request()->query()) }}" class="bg-secondary text-white px-4 py-2.5 rounded-xl text-sm font-semibold transition shadow-md flex items-center gap-2 hover:bg-gray-800">
-                <i data-lucide="bar-chart-3" class="w-4 h-4"></i> Analisa Visual
-            </a>
             <a href="{{ route('admin.reports.export-pdf', request()->query()) }}" target="_blank" class="bg-red-600 hover:bg-red-700 text-white px-4 py-2.5 rounded-xl text-sm font-semibold transition shadow-md flex items-center gap-2">
                 <i data-lucide="file-text" class="w-4 h-4"></i> Export PDF
             </a>
@@ -70,6 +67,31 @@
             <h3 class="text-3xl font-bold text-secondary">Rp {{ number_format($averageOrderValue, 0, ',', '.') }}</h3>
             <div class="mt-4 inline-flex items-center gap-1.5 text-xs font-semibold text-warning bg-orange-50 px-2 py-1 rounded-lg">
                 <i data-lucide="pie-chart" class="w-3.5 h-3.5"></i> Per Transaksi
+            </div>
+        </div>
+    </div>
+
+    {{-- Charts: Tren Penjualan & Porsi Terjual --}}
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-6">
+        {{-- Tren Penjualan Harian (Lebar 2 Kolom) --}}
+        <div class="lg:col-span-2 bg-surface p-6 rounded-2xl border border-gray-100 shadow-sm">
+            <h3 class="text-lg font-bold text-secondary mb-4 flex items-center gap-2">
+                <i data-lucide="trending-up" class="w-5 h-5 text-primary"></i>
+                Tren Penjualan Harian
+            </h3>
+            <div class="relative h-72">
+                <canvas id="trendChart"></canvas>
+            </div>
+        </div>
+
+        {{-- Bar Chart Qty Terjual (Lebar 1 Kolom) --}}
+        <div class="bg-surface p-6 rounded-2xl border border-gray-100 shadow-sm flex flex-col">
+            <h3 class="text-lg font-bold text-secondary mb-4 flex items-center gap-2">
+                <i data-lucide="bar-chart-horizontal" class="w-5 h-5 text-primary"></i>
+                Chart Menu Terlaris
+            </h3>
+            <div class="relative flex-1 min-h-[250px]">
+                <canvas id="barQtyChart"></canvas>
             </div>
         </div>
     </div>
@@ -150,6 +172,7 @@
 </div>
 
 @push('scripts')
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
     // Tampilkan custom range form jika period=custom di klik dari tombol
     document.querySelectorAll('a[href*="period=custom"]').forEach(btn => {
@@ -161,6 +184,89 @@
                 form.classList.add('flex');
             }
         });
+    });
+
+    document.addEventListener('DOMContentLoaded', function() {
+        lucide.createIcons();
+
+        const menuNames   = {!! json_encode($topMenus->map(fn($m) => $m->menu->name ?? 'N/A')->values()) !!};
+        const menuQty     = {!! json_encode($topMenus->map(fn($m) => $m->total_sold)->values()) !!};
+        const trendLabels = {!! json_encode($trendLabels ?? []) !!};
+        const trendValues = {!! json_encode($trendData ?? []) !!};
+
+        const colors = ['#F97316','#3B82F6','#10B981','#F59E0B','#8B5CF6'];
+
+        // --- Tren Chart (Line) ---
+        const tCtx = document.getElementById('trendChart');
+        if (tCtx) {
+            const trendCtx = tCtx.getContext('2d');
+            let grad = trendCtx.createLinearGradient(0,0,0,300);
+            grad.addColorStop(0,'rgba(234,179,8,0.25)');
+            grad.addColorStop(1,'rgba(234,179,8,0)');
+            new Chart(trendCtx, {
+                type: 'line',
+                data: {
+                    labels: trendLabels,
+                    datasets: [{
+                        label: 'Pendapatan (Rp)',
+                        data: trendValues,
+                        borderColor: '#F97316',
+                        backgroundColor: grad,
+                        borderWidth: 2.5,
+                        pointBackgroundColor: '#fff',
+                        pointBorderColor: '#F97316',
+                        pointBorderWidth: 2,
+                        pointRadius: 4,
+                        fill: true,
+                        tension: 0.4
+                    }]
+                },
+                options: {
+                    responsive: true, maintainAspectRatio: false,
+                    plugins: {
+                        legend: { display: false },
+                        tooltip: {
+                            backgroundColor: '#000000', cornerRadius: 8, padding: 10,
+                            displayColors: false, bodyFont: { family: 'Poppins' },
+                            callbacks: { label: ctx => 'Rp ' + (ctx.raw||0).toLocaleString('id-ID') }
+                        }
+                    },
+                    scales: {
+                        y: { beginAtZero: true, grid: { color: '#F3F4F6' },
+                             ticks: { font: {family:'Poppins',size:11}, color:'#6B7280',
+                                      callback: v => v >= 1000000 ? (v/1000000)+'M' : v >= 1000 ? (v/1000)+'K' : v } },
+                        x: { grid: { display: false }, ticks: { font: {family:'Poppins',size:11}, color:'#6B7280' } }
+                    }
+                }
+            });
+        }
+
+        // --- Bar Qty Chart ---
+        const bCtx = document.getElementById('barQtyChart');
+        if (bCtx) {
+            new Chart(bCtx.getContext('2d'), {
+                type: 'bar',
+                data: {
+                    labels: menuNames,
+                    datasets: [{ label: 'Porsi Terjual', data: menuQty,
+                        backgroundColor: menuNames.map((_, i) => colors[i % colors.length] + 'CC'),
+                        borderColor: menuNames.map((_, i) => colors[i % colors.length]),
+                        borderWidth: 1.5, borderRadius: 6 }]
+                },
+                options: {
+                    responsive: true, maintainAspectRatio: false, indexAxis: 'y',
+                    plugins: { legend: { display: false }, tooltip: {
+                        backgroundColor: '#000000', cornerRadius: 8,
+                        callbacks: { label: ctx => ` ${ctx.raw} porsi` }
+                    }},
+                    scales: {
+                        x: { beginAtZero: true, grid: { color: '#F3F4F6' },
+                             ticks: { font: {family:'Poppins',size:11}, color: '#6B7280' } },
+                        y: { grid: { display: false }, ticks: { font: {family:'Poppins',size:11}, color: '#374151' } }
+                    }
+                }
+            });
+        }
     });
 </script>
 @endpush

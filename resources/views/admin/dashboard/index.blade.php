@@ -84,7 +84,7 @@
         <div class="lg:col-span-2 bg-surface p-6 rounded-xl border border-gray-100 shadow-sm">
             <div class="flex items-center justify-between mb-4">
                 <h3 class="text-lg font-bold text-secondary">Grafik Penjualan 7 Hari Terakhir</h3>
-                <a href="{{ route('admin.reports.charts') }}" class="text-xs text-primary hover:underline font-medium flex items-center gap-1">
+                <a href="{{ route('admin.reports.index') }}" class="text-xs text-primary hover:underline font-medium flex items-center gap-1">
                     <i data-lucide="external-link" class="w-3 h-3"></i> Lihat Detail
                 </a>
             </div>
