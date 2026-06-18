@@ -19,13 +19,13 @@
                         sans: ['Poppins', 'sans-serif'],
                     },
                     colors: {
-                        primary: '#F97316',   // Kuning tua elegan
+                        primary: '#885d3e',   // Kuning tua elegan
                         secondary: '#000000', // Hitam gelap
                         surface: '#FFFFFF',   // Putih
                         background: '#F9FAFB',// Abu terang
                         success: '#22C55E',   // Hijau
                         danger: '#EF4444',    // Merah
-                        warning: '#F59E0B',   // Orange
+                        warning: '#885d3e',   // Orange
                     }
                 }
             }
@@ -55,8 +55,8 @@
         /* Custom Scrollbar */
         ::-webkit-scrollbar { width: 6px; height: 6px; }
         ::-webkit-scrollbar-track { background: transparent; }
-        ::-webkit-scrollbar-thumb { background: #F97316; border-radius: 10px; }
-        ::-webkit-scrollbar-thumb:hover { background: #EA580C; }
+        ::-webkit-scrollbar-thumb { background: #885d3e; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: #885d3e; }
 
         /* AJAX Loading Overlay (Default hidden) */
         #ajax-loader { display: none; }
