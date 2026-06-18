@@ -160,7 +160,7 @@
                     if(response.success) {
                         Toast.fire({
                             icon: 'success',
-                            title: 'Login Berhasil, mengarahkan...'
+                            title: 'Login Berhasil'
                         });
                         setTimeout(() => {
                             window.location.href = response.redirect;
