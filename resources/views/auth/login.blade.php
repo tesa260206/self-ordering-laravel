@@ -14,7 +14,7 @@
                 extend: {
                     fontFamily: { sans: ['Poppins', 'sans-serif'] },
                     colors: {
-                        primary: '#F97316',
+                        primary: '#885d3e',
                         secondary: '#000000',
                         surface: '#FFFFFF',
                         background: '#F9FAFB',
@@ -56,7 +56,7 @@
         <div class="text-center mb-8 relative z-10">
             @php $setting = \App\Models\Setting::first(); @endphp
             <h1 class="text-[28px] font-extrabold text-secondary tracking-tight mb-1">{{ $setting->resto_name ?? 'Self Order System' }}</h1>
-            <p class="text-gray-500 text-[13px] font-medium leading-relaxed">Masuk ke panel manajemen untuk mengelola bisnis restoran Anda.</p>
+            <p class="text-gray-500 text-[13px] font-medium leading-relaxed">UMKM Bakoel Nonik</p>
         </div>
 
         {{-- Form Login --}}
@@ -68,7 +68,7 @@
                     <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
                         <i data-lucide="user" class="w-[18px] h-[18px] text-gray-400"></i>
                     </div>
-                    <input type="text" id="username" name="username" class="w-full pl-11 pr-4 py-3.5 rounded-xl border border-gray-200 focus:ring-2 focus:ring-primary/20 focus:border-primary transition outline-none text-sm text-secondary bg-gray-50 focus:bg-white font-medium" required placeholder="Masukkan username">
+                    <input type="text" id="username" name="username" class="w-full pl-11 pr-4 py-3.5 rounded-xl border border-gray-200 focus:ring-2 focus:ring-primary/20 focus:border-primary transition outline-none text-sm text-secondary bg-gray-50 focus:bg-white font-medium" required placeholder="Enter Username">
                 </div>
                 <p id="err_username" class="text-[11px] font-bold text-red-500 mt-1.5 hidden"></p>
             </div>
@@ -87,8 +87,8 @@
                 <p id="err_password" class="text-[11px] font-bold text-red-500 mt-1.5 hidden"></p>
             </div>
 
-            <button type="submit" id="btnSubmit" class="w-full bg-primary hover:bg-[#EA580C] text-white font-bold py-3.5 rounded-xl transition duration-200 flex justify-center items-center gap-2 shadow-lg shadow-primary/30 mt-8 active:scale-95 text-[15px]">
-                <span id="btnText">Masuk Sekarang</span>
+            <button type="submit" id="btnSubmit" class="w-full bg-primary hover:bg-primary text-white font-bold py-2 rounded-xl transition duration-200 flex justify-center items-center gap-2 shadow-lg shadow-primary/30 mt-6 active:scale-95 text-[15px]">
+                <span id="btnText">Akses Sekarang</span>
                 <i data-lucide="log-in" id="btnIcon" class="w-[18px] h-[18px]"></i>
                 <svg id="btnLoader" class="hidden animate-spin h-[18px] w-[18px] text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                     <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
@@ -142,7 +142,7 @@
             e.preventDefault();
             
             let btn = $('#btnSubmit');
-            $('#btnText').text('Memproses...');
+            $('#btnText').text('Memverifikasi...');
             $('#btnIcon').addClass('hidden');
             $('#btnLoader').removeClass('hidden');
             btn.prop('disabled', true);
@@ -160,7 +160,7 @@
                     if(response.success) {
                         Toast.fire({
                             icon: 'success',
-                            title: 'Login Berhasil'
+                            title: 'Autentikasi Berhasil'
                         });
                         setTimeout(() => {
                             window.location.href = response.redirect;
